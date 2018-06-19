@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS-Task-03</title>
+</head>
+<body>
+    <style>
+        #submitButton {
+            color: green;
+            margin-top: 5px;
+        }
+
+        #ageDiv {
+            margin-top: 5px;
+        }
+
+        table {
+            margin-top: 20px;
+            border: 1px solid black;
+        }
+        
+        td {
+            border: 1px solid grey;
+        }
+    </style>
+
+    <div id='firstNameDiv'>
+        <input type="text" id='firstName' placeholder='First Name'>
+    </div>
+
+    <div id='ageDiv'>
+        <select id='ageDropdown'>
+            <option value="">Select Age</option>
+            <script>
+                for (let i = 18; i < 31; i++) {
+                    document.write('<option value =' + i + '>' + i + '</option>');
+                }    
+            </script>
+        </select>
+    </div>
+
+    <button type="submit" id='submitButton' onclick='addUser()'>Submit</button>
+
+    <script src='app.js'></script>
+</body>
+</html>
