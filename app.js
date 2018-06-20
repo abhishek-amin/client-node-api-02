@@ -1,26 +1,39 @@
 
 let userList = [];
 
+// add new user to the list
+function addUser () {
+    let userFirstName = document.getElementById('firstName').value;
+    let userAge = document.getElementById('ageDropdown').value;
+    let userID = '_' + Math.random().toString(36).substr(2, 9);
+
+    let userDetails = {
+        'firstname' : userFirstName,
+        'age' : userAge,
+        'id' : userID
+    };
+
+    new User(userDetails);
+}
+
 class User {
-    constructor(firstname, age, id) {
-        this.firstname = firstname;
-        this.age = age;
-        this.id = id;
+    constructor(data) {
+        this.userData = data;
     }
 
-    // get userData() {
-    //     return {
-    //         'firstname' : this.firstname,
-    //         'age' : this.age,
-    //         'id' : this.id
-    //     };
-    // }
+    get userData() {
+        return this.data;
+    }
 
-    // set userData(user) {
-    //     this.firstname = user.firstname;
-    //     this.age = user.age;
-    //     this.id = id;
-    // }
+    set userData(data) {
+        this.firstname = data.firstname;
+        this.age = data.age;
+        this.id = data.id;
+
+        userList.push(data);
+        console.log(userList);
+        updateTable();
+    }
 }
 
 // function to create table
@@ -48,22 +61,6 @@ function createTable() {
     document.body.appendChild(table);
 }
 
-// function to fill table row
-function addTableRow (user) {
-    userRow = document.createElement('TR');
-    tableDataName = document.createElement('TD');
-    tableDataAge = document.createElement('TD');
-
-    userRow.setAttribute('id', user.id);
-
-    tableDataName.innerHTML = user.firstname;
-    tableDataAge.innerHTML = user.age;
-
-    userRow.appendChild(tableDataName);
-    userRow.appendChild(tableDataAge);
-    document.getElementById('usersTable').appendChild(userRow);
-}
-
 // fill or update table
 function updateTable () {
     if (userList.length == 0) return;
@@ -75,12 +72,14 @@ function updateTable () {
     }
 
     createTable();
+    
     for (let i = 0; i < userList.length; i++) {
         userRow = document.createElement('TR');
         tableDataName = document.createElement('TD');
         tableDataAge = document.createElement('TD');
 
         userRow.setAttribute('id', userList[i].id);
+        userRow.setAttribute('class', 'dataRow');
         userRow.setAttribute('onclick', 'deleteUser(this)');
 
         tableDataName.innerHTML = userList[i].firstname;
@@ -99,18 +98,5 @@ function deleteUser (rowToDelete) {
             userList.splice(i, 1);
         }
     }
-    updateTable();
-    // document.getElementById(rowToDelete.id).remove(rowToDelete);
-}
-
-// add new user to the list
-function addUser () {
-    let userFirstName = document.getElementById('firstName').value;
-    let userAge = document.getElementById('ageDropdown').value;
-    let userID = '_' + Math.random().toString(36).substr(2, 9);
-
-    let user = new User(userFirstName, userAge, userID);
-    userList.push(user);
-    console.log(userList);
     updateTable();
 }

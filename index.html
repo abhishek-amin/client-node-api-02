@@ -5,6 +5,14 @@
 </head>
 <body>
     <style>
+        .container {
+            vertical-align: middle;
+        }
+
+        .dataRow:hover {
+            background-color: lightcoral;
+        }
+
         #submitButton {
             color: green;
             margin-top: 5px;
@@ -24,23 +32,21 @@
         }
     </style>
 
-    <div id='firstNameDiv'>
-        <input type="text" id='firstName' placeholder='First Name'>
+    <div class='container'>
+        <div id='firstNameDiv'>
+            <input type="text" id='firstName' placeholder='First Name'>
+        </div>
+
+        <div id='ageDiv'>
+            <select id='ageDropdown'>
+                <option value="">Select Age</option>
+                <script src='ageDropdown.js'></script>
+            </select>
+        </div>
+
+        <button type="submit" id='submitButton' onclick='addUser()'>Submit</button>
+
+        <script src='app.js'></script>
     </div>
-
-    <div id='ageDiv'>
-        <select id='ageDropdown'>
-            <option value="">Select Age</option>
-            <script>
-                for (let i = 18; i < 31; i++) {
-                    document.write('<option value =' + i + '>' + i + '</option>');
-                }    
-            </script>
-        </select>
-    </div>
-
-    <button type="submit" id='submitButton' onclick='addUser()'>Submit</button>
-
-    <script src='app.js'></script>
 </body>
 </html>
