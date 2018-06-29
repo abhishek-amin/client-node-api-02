@@ -1,52 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JS-Task-03</title>
+	<title>Node-API</title>
 </head>
 <body>
-    <style>
-        .container {
-            vertical-align: middle;
-        }
+	<style>
+		ul {
+			position: fixed;
+			list-style-type: none;
+			margin-top: 10px;
+			padding: 0;
+			overflow: hidden;
+			background-color: #333;
+		}
 
-        .dataRow:hover {
-            background-color: lightcoral;
-        }
+		li {
+				list-style-type: none;
+				margin-top: 10px;
+				margin-bottom: 10px;
+				float: left;
+		}
 
-        #submitButton {
-            color: green;
-            margin-top: 5px;
-        }
+		li button {
+				display: block;
+				text-align: center;
+				padding: 7px 8px;
+				text-decoration: none;
+		}
 
-        #ageDiv {
-            margin-top: 5px;
-        }
+		li button:hover {
+			background-color: lightcoral;
+		}
 
-        table {
-            margin-top: 20px;
-            border: 1px solid black;
-        }
-        
-        td {
-            border: 1px solid grey;
-        }
-    </style>
+		#container {
+			margin: auto;
+			width: max-content;
+			padding: 10px;
+		}
 
-    <div class='container'>
-        <div id='firstNameDiv'>
-            <input type="text" id='firstName' placeholder='First Name'>
-        </div>
+		.dataRow:hover {
+			background-color: lightcoral;
+		}
 
-        <div id='ageDiv'>
-            <select id='ageDropdown'>
-                <option value="">Select Age</option>
-                <script src='ageDropdown.js'></script>
-            </select>
-        </div>
+		#ageDiv {
+			margin-top: 5px;
+		}
 
-        <button type="submit" id='submitButton' onclick='addUser()'>Submit</button>
+		table {
+			padding: 10px;
+			margin-top: 20px;
+			border: 1px solid black;
+		}
 
-        <script src='app.js'></script>
-    </div>
+		td {
+			text-align: center;
+			border: 1px solid grey;
+			padding: 5px;
+		}
+	</style>
+
+	<div id='container'>
+		<p id='showPageNumber'></p>
+		<script src='app.js'></script>
+		<ul id='pageNav'>
+
+		</ul>
+	</div>
 </body>
 </html>
